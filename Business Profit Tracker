@@ -1,0 +1,32 @@
+import java.util.*;  
+public class Class1 {
+
+	public static void main(String[] args) {
+		ArrayList<Integer>q1=new ArrayList<Integer>();
+		Random ran1=new Random();
+		int cost= 100, price=250;
+		double profit = 0; 
+		int demand , replenish, inventory, fail=0;
+		replenish=100; inventory=4;
+		for( replenish=0; replenish<200; replenish++) {
+			profit= 0;
+		for(int year=0;year<1000;year++){
+		inventory = 4; 
+		for(int day=0; day<365; day++) {
+			demand=(int)(ran1.nextGaussian()*100+100);
+			if (demand<0)demand=0;
+			inventory += replenish;
+			profit -= replenish*cost;
+			q1.add(demand);
+			if(inventory>=q1.get(0)) {
+				inventory -=q1.get(0);
+				profit += price*q1.get(0);
+				q1.remove(0);
+			} 
+		} //end of for int day..
+		q1.clear();
+	}// end of int year 
+		System.out.println("replenish= "+replenish+" profit= "+ profit/1000);
+		}//end of replenish for loop
+	}//end of main
+}//end of class1
